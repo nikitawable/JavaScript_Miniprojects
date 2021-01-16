@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>NumberGame</title>
+        <script>
+            
+                var target;
+                var target1;
+                var guess_input_text;
+                var guess_input;
+                var finished=false;
+                var guesses=0;
+                var guess;
+                function game()
+            {
+                target=Math.random()*100;
+                target1=Math.floor(target)+1;               
+                while(!finished)
+                {
+                    guess_input_text=prompt("The computer has choosen the number between 1 and 100.Try to guess the number?");
+                    guess_input=parseInt(guess_input_text); 
+                    guesses++;
+                    if(!guess_input)
+                    {
+                        finished=true;
+                    }
+                    else{
+                    finished=check(guess_input);
+                    }
+                }
+
+            }
+            function check(guess)
+            {
+                if(guess<target1)
+                {
+                    alert("The number is smaller");
+                    return false;
+                }
+                if(guess>target1)
+                {
+                    alert("The number is larger");
+                    return false;
+                }
+                
+                if(isNaN(guess)){
+                    alert("please enter valid number");
+                    return false;
+                }
+                if(guess<1 || guess>100) {
+                    alert("out of range");
+                    return false;
+                }
+                alert("Yes you entered the right answer in "+guesses+"guesses");
+                return true;
+                
+            }
+        </script>
+    </head>
+    <body onload="game();">
+        
+    </body>
+</html>
